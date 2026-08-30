@@ -11,3 +11,14 @@ updates:
           - "*"
     cooldown:
       default-days: 7
+  # Maintain dependencies for pre-commit hooks
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      hooks:
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 7
