@@ -419,11 +419,7 @@ def test_annotation_fail_with_max_length(
     )
     monkeypatch.setenv("GITHUB_ACTIONS", "true")
     monkeypatch.setenv("PYTHONPATH", str(REPO_ROOT))
-    result = pytester.runpytest_subprocess(
-        "-p",
-        "pytest_github_actions_annotate_failures.plugin",
-        "--github-annotation-max-length=80",
-    )
+    result = pytester.runpytest_subprocess("--github-annotation-max-length=80")
     lines = [line for line in result.errlines if line.startswith("::error ")]
 
     assert len(lines) == 1
