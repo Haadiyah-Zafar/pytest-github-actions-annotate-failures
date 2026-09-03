@@ -433,11 +433,7 @@ def test_annotation_max_length_rejects_negative(
     pytester: pytest.Pytester, monkeypatch: pytest.MonkeyPatch
 ):
     monkeypatch.setenv("PYTHONPATH", str(REPO_ROOT))
-    result = pytester.runpytest_subprocess(
-        "-p",
-        "pytest_github_actions_annotate_failures.plugin",
-        "--github-annotation-max-length=-1",
-    )
+    result = pytester.runpytest_subprocess("--github-annotation-max-length=-1")
     result.stderr.fnmatch_lines(
         ["ERROR: --github-annotation-max-length must be greater than or equal to 0"]
     )
